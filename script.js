@@ -79,3 +79,32 @@ tabcontainer.addEventListener("click", function (e) {
   //add the wanted content
   wanted_content.classList.add("operations__content--active");
 });
+
+//navigation hover effect
+const hover_effect = function (e) {
+  // console.log(e.target);
+  if (e.target.classList.contains("nav__link")) {
+    //link is the element that mouse comes over
+    const link = e.target;
+    //need other links to blur
+    //there can be other nav links also, if we search element this way its much better
+    const other_links = e.target.closest(".nav").querySelectorAll(".nav__link");
+    console.log(other_links);
+    //also need the image to blur
+    const image = e.target.closest(".nav").querySelector(".nav__logo");
+    //blur everything other than the mouse over element
+    other_links.forEach((lnk) => {
+      if (lnk !== link) {
+        lnk.style.opacity = this;
+      }
+    });
+    image.style.opacity = this;
+    console.log(link);
+  }
+};
+
+const nav = document.querySelector(".nav");
+
+nav.addEventListener("mouseover", hover_effect.bind(0.5));
+
+nav.addEventListener("mouseout", hover_effect.bind(1));
